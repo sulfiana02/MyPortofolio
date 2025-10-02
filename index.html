@@ -1,440 +1,631 @@
 <!DOCTYPE html>
-
 <html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV Sulfiana</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css"> 
+  <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Custom styles for animations and transitions */
+    .skill-progress {
+      transition: width 1.5s ease-in-out;
+    }
+    .album-item-overlay {
+      transition: all 0.3s ease;
+    }
+    .album-item:hover .album-item-overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .nav-link.active {
+      font-weight: bold;
+    }
+    .dark-mode {
+      background-color: #1a202c;
+      color: #e2e8f0;
+    }
+    .dark-mode .bg-white {
+      background-color: #2d3748;
+    }
+    .dark-mode .text-gray-800 {
+      color: #e2e8f0;
+    }
+    .dark-mode .text-gray-600 {
+      color: #cbd5e0;
+    }
+    .dark-mode .bg-gray-100 {
+      background-color: #4a5568;
+    }
+    .dark-mode .border-gray-300 {
+      border-color: #4a5568;
+    }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans transition-colors duration-300">
   <!-- Enhanced Modern Navbar -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="nav-logo">
-        <i class="fas fa-user-circle"></i>
-        Sulfiana
-      </a>
-      <ul class="nav-menu" id="navMenu">
-        <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#profil">Profil</a></li>
-        <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
-        <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
-      </ul>
-      <div class="nav-toggle" id="navToggle">
-        <span></span>
-        <span></span>
-        <span></span>
+  <nav id="navbar" class="fixed w-full z-50 bg-white/90 backdrop-blur-sm shadow-sm transition-all duration-300">
+    <div class="container mx-auto px-4">
+      <div class="flex justify-between items-center py-3">
+        <a href="#home" class="flex items-center text-xl font-bold text-pink-600">
+          <i class="fas fa-user-circle mr-2"></i>
+          Sulfiana
+        </a>
+        
+        <ul id="navMenu" class="hidden md:flex space-x-8">
+          <li><a class="nav-link active text-gray-700 hover:text-pink-600 transition-colors" href="#home">Home</a></li>
+          <li><a class="nav-link text-gray-700 hover:text-pink-600 transition-colors" href="#profil">Profil</a></li>
+          <li><a class="nav-link text-gray-700 hover:text-pink-600 transition-colors" href="#galeri">Galeri</a></li>
+          <li><a class="nav-link text-gray-700 hover:text-pink-600 transition-colors" href="#kontak">Kontak</a></li>
+        </ul>
+        
+        <button id="navToggle" class="md:hidden flex flex-col space-y-1">
+          <span class="w-6 h-0.5 bg-gray-700"></span>
+          <span class="w-6 h-0.5 bg-gray-700"></span>
+          <span class="w-6 h-0.5 bg-gray-700"></span>
+        </button>
       </div>
     </div>
   </nav>
 
-  <!-- Particle Background -->
-  <div id="particles-js"></div>
-
   <!-- Theme Toggle Button -->
-  <button class="theme-toggle" id="themeToggle">
+  <button id="themeToggle" class="fixed right-6 bottom-6 z-40 w-12 h-12 rounded-full bg-pink-600 text-white shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-pink-700">
     <i class="fas fa-moon"></i>
   </button>
 
-  <section id="profil">
-    <div class="container" id="cvContainer">
-      <!-- Kolom Kiri -->
-      <div class="left">
-        <div class="profile-img-container" data-aos="zoom-in">
-          <img src="foto.jpg" alt="Foto Sulfiana">
-        </div>
-        <h2 class="animate-item" data-aos="fade-up">Sulfiana</h2>
-        <p class="animate-item delay-1" data-aos="fade-up" data-aos-delay="200">Lulusan Baru</p>
+  <!-- Profil Section -->
+  <section id="profil" class="pt-20 pb-16 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Kolom Kiri -->
+        <div class="md:w-1/3">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-6" data-aos="zoom-in">
+            <div class="w-48 h-48 mx-auto rounded-full overflow-hidden mb-6">
+              <img src="foto.jpg" alt="Foto Sulfiana" class="w-full h-full object-cover">
+            </div>
+            <h2 class="text-2xl font-bold text-center mb-2" data-aos="fade-up">Sulfiana</h2>
+            <p class="text-center text-gray-600 mb-6" data-aos="fade-up" data-aos-delay="200">Lulusan Baru</p>
 
-        <h3 class="animate-item delay-2" data-aos="fade-up" data-aos-delay="300">Data Pribadi</h3>
-        <ul class="personal-data">
-          <li class="animate-item delay-2" data-aos="fade-right" data-aos-delay="400">
-            <div class="icon-wrapper"><i class="fas fa-birthday-cake"></i></div>
-            <div class="data-label">TTL:</div>
-            <div>Maroanging, 2 Juni 2006</div>
-          </li>
-          <li class="animate-item delay-2" data-aos="fade-right" data-aos-delay="500">
-            <div class="icon-wrapper"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="data-label">Alamat:</div>
-            <div>Kampiri, Kec. Pammana, Kab. Wajo</div>
-          </li>
-          <li class="animate-item delay-2" data-aos="fade-right" data-aos-delay="600">
-            <div class="icon-wrapper"><i class="fas fa-venus"></i></div>
-            <div class="data-label">Jenis Kelamin:</div>
-            <div>Perempuan</div>
-          </li>
-          <li class="animate-item delay-2" data-aos="fade-right" data-aos-delay="700">
-            <div class="icon-wrapper"><i class="fas fa-flag"></i></div>
-            <div class="data-label">Kewarganegaraan:</div>
-            <div>Indonesia</div>
-          </li>
-          <li class="animate-item delay-2" data-aos="fade-right" data-aos-delay="800">
-            <div class="icon-wrapper"><i class="fas fa-heart"></i></div>
-            <div class="data-label">Status:</div>
-            <div>Belum Menikah</div>
-          </li>
-        </ul>
+            <h3 class="text-xl font-semibold mb-4" data-aos="fade-up" data-aos-delay="300">Data Pribadi</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start" data-aos="fade-right" data-aos-delay="400">
+                <div class="w-8 text-pink-600 mt-1"><i class="fas fa-birthday-cake"></i></div>
+                <div class="flex-1">
+                  <span class="font-medium">TTL:</span>
+                  <span class="ml-2">Maroanging, 2 Juni 2006</span>
+                </div>
+              </li>
+              <li class="flex items-start" data-aos="fade-right" data-aos-delay="500">
+                <div class="w-8 text-pink-600 mt-1"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="flex-1">
+                  <span class="font-medium">Alamat:</span>
+                  <span class="ml-2">Kampiri, Kec. Pammana, Kab. Wajo</span>
+                </div>
+              </li>
+              <li class="flex items-start" data-aos="fade-right" data-aos-delay="600">
+                <div class="w-8 text-pink-600 mt-1"><i class="fas fa-venus"></i></div>
+                <div class="flex-1">
+                  <span class="font-medium">Jenis Kelamin:</span>
+                  <span class="ml-2">Perempuan</span>
+                </div>
+              </li>
+              <li class="flex items-start" data-aos="fade-right" data-aos-delay="700">
+                <div class="w-8 text-pink-600 mt-1"><i class="fas fa-flag"></i></div>
+                <div class="flex-1">
+                  <span class="font-medium">Kewarganegaraan:</span>
+                  <span class="ml-2">Indonesia</span>
+                </div>
+              </li>
+              <li class="flex items-start" data-aos="fade-right" data-aos-delay="800">
+                <div class="w-8 text-pink-600 mt-1"><i class="fas fa-heart"></i></div>
+                <div class="flex-1">
+                  <span class="font-medium">Status:</span>
+                  <span class="ml-2">Belum Menikah</span>
+                </div>
+              </li>
+            </ul>
+            
+            <div class="flex justify-center space-x-4 mt-6" data-aos="zoom-in" data-aos-delay="900">
+              <a href="https://www.linkedin.com/in/sulfiana-tekom-e-undefined-0a860a382/" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://www.instagram.com/sulfy.cuppi?igsh=YnhnZjcxa2hmdzRm&utm_source=qr" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://x.com/Sulfyanaaa?t=r-0w8tMVuqn2C8hbrDuNNw&s=09" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+          </div>
+        </div>
         
-        <div class="social-links animate-item delay-3" data-aos="zoom-in" data-aos-delay="900">
-          <a href="https://www.linkedin.com/in/sulfiana-tekom-e-undefined-0a860a382/"><i class="fab fa-linkedin-in"></i></a>
-          <a href="https://www.instagram.com/sulfy.cuppi?igsh=YnhnZjcxa2hmdzRm&utm_source=qr"><i class="fab fa-instagram"></i></a>
-          <a href="https://x.com/Sulfyanaaa?t=r-0w8tMVuqn2C8hbrDuNNw&s=09"><i class="fab fa-twitter"></i></a>
-        </div>
-      </div>
-      
-      <!-- Kolom Kanan -->
-      <div class="right">
-        <h1 class="animate-item" data-aos="fade-right">Profil</h1>
-        <p class="animate-item delay-1" data-aos="fade-right" data-aos-delay="200">
-          Saya adalah Mahasiswi S1 Teknik Komputer di Universitas Negeri Makassar.
-          Aktif dalam berbagai kepanitiaan sebagai sekretaris, termasuk MPLS, LDKS, 
-          dan acara pisah tamat jabatan pada tahun 2023. Memiliki kemampuan 
-          komunikasi yang baik, terorganisir, dan mampu bekerja dalam tim. 
-          Tertarik pada pengembangan front end web dan telah mengikuti pelatihan dari Google Developer Group.
-        </p>
+        <!-- Kolom Kanan -->
+        <div class="md:w-2/3">
+          <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <h1 class="text-3xl font-bold mb-4" data-aos="fade-right">Profil</h1>
+            <p class="text-gray-700 mb-6 leading-relaxed" data-aos="fade-right" data-aos-delay="200">
+              Saya adalah Mahasiswi S1 Teknik Komputer di Universitas Negeri Makassar.
+              Aktif dalam berbagai kepanitiaan sebagai sekretaris, termasuk MPLS, LDKS, 
+              dan acara pisah tamat jabatan pada tahun 2023. Memiliki kemampuan 
+              komunikasi yang baik, terorganisir, dan mampu bekerja dalam tim. 
+              Tertarik pada pengembangan front end web dan telah mengikuti pelatihan dari Google Developer Group.
+            </p>
 
-        <div class="section animate-item delay-2" data-aos="fade-up" data-aos-delay="300">
-          <h2><i class="fas fa-graduation-cap"></i> Pendidikan</h2>
-          <ul>
-            <li>2012–2018: SDN 223 Kampiri</li>
-            <li>2018–2021: SMPN 1 Pammana</li>
-            <li>2021–2024: SMAN 9 Wajo</li>
-            <li>2024–Sekarang: Universitas Negeri Makassar</li>
-          </ul>
-        </div>
+            <div class="mb-8" data-aos="fade-up" data-aos-delay="300">
+              <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-graduation-cap text-pink-600 mr-2"></i> Pendidikan
+              </h2>
+              <ul class="space-y-2 ml-6">
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>2012–2018: SDN 223 Kampiri</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>2018–2021: SMPN 1 Pammana</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>2021–2024: SMAN 9 Wajo</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>2024–Sekarang: Universitas Negeri Makassar</span>
+                </li>
+              </ul>
+            </div>
 
-        <div class="section animate-item delay-2" data-aos="fade-up" data-aos-delay="400">
-          <h2><i class="fas fa-tools"></i> Keahlian</h2>
-          <div class="skill-name">
-            <span>Microsoft Office (Word, Excel)</span>
-            <span>85%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="85%"></div>
-          </div>
-          
-          <div class="skill-name">
-            <span>Desain Grafis (Canva)</span>
-            <span>75%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="75%"></div>
-          </div>
-          
-          <div class="skill-name">
-            <span>HTML & PHP dasar</span>
-            <span>70%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="70%"></div>
-          </div>
-          
-          <div class="skill-name">
-            <span>Kolaborasi dalam Tim</span>
-            <span>90%</span>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-progress" data-width="90%"></div>
-          </div>
-        </div>
+            <div class="mb-8" data-aos="fade-up" data-aos-delay="400">
+              <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-tools text-pink-600 mr-2"></i> Keahlian
+              </h2>
+              <div class="space-y-4">
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Microsoft Office (Word, Excel)</span>
+                    <span>85%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="skill-progress bg-pink-600 h-2.5 rounded-full" data-width="85%"></div>
+                  </div>
+                </div>
+                
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Desain Grafis (Canva)</span>
+                    <span>75%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="skill-progress bg-pink-600 h-2.5 rounded-full" data-width="75%"></div>
+                  </div>
+                </div>
+                
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>HTML & PHP dasar</span>
+                    <span>70%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="skill-progress bg-pink-600 h-2.5 rounded-full" data-width="70%"></div>
+                  </div>
+                </div>
+                
+                <div>
+                  <div class="flex justify-between mb-1">
+                    <span>Kolaborasi dalam Tim</span>
+                    <span>90%</span>
+                  </div>
+                  <div class="w-full bg-gray-200 rounded-full h-2.5">
+                    <div class="skill-progress bg-pink-600 h-2.5 rounded-full" data-width="90%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div class="section animate-item delay-3" data-aos="fade-up" data-aos-delay="500">
-          <h2><i class="fas fa-trophy"></i> Pengalaman / Prestasi</h2>
-          <ul>
-            <li>Sekretaris OSIS SMAN 9 Wajo (2022/2023)</li>
-            <li>Peserta lomba OSN TIK tingkat kabupaten</li>
-            <li>Juara 3 Lomba Karya Tulis Ilmiah Tingkat Nasional</li>
-          </ul>
+            <div data-aos="fade-up" data-aos-delay="500">
+              <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-trophy text-pink-600 mr-2"></i> Pengalaman / Prestasi
+              </h2>
+              <ul class="space-y-2 ml-6">
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>Sekretaris OSIS SMAN 9 Wajo (2022/2023)</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>Peserta lomba OSN TIK tingkat kabupaten</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="text-pink-600 mr-2">•</span>
+                  <span>Juara 3 Lomba Karya Tulis Ilmiah Tingkat Nasional</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Galeri Section -->
-  <section id="galeri">
-    
+  <section id="galeri" class="py-16 px-4 bg-gray-100">
+    <div class="container mx-auto">
+      <!-- Album Navigation -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button class="album-btn Person px-4 py-2 rounded-full bg-white text-gray-700 shadow-sm hover:bg-pink-600 hover:text-white transition-colors" data-album="Person">
+          <i class="fas fa-users mr-2"></i> My Favorit Person
+        </button>
+        <button class="album-btn organisasi active px-4 py-2 rounded-full bg-pink-600 text-white shadow-sm transition-colors" data-album="organisasi">
+          <i class="fas fa-users mr-2"></i> Organisasi
+        </button>
+        <button class="album-btn akademik px-4 py-2 rounded-full bg-white text-gray-700 shadow-sm hover:bg-pink-600 hover:text-white transition-colors" data-album="akademik">
+          <i class="fas fa-graduation-cap mr-2"></i> Akademik
+        </button>
+        <button class="album-btn kuliah px-4 py-2 rounded-full bg-white text-gray-700 shadow-sm hover:bg-pink-600 hover:text-white transition-colors" data-album="kuliah">
+          <i class="fas fa-book mr-2"></i> Kuliah
+        </button>
+        <button class="album-btn pribadi px-4 py-2 rounded-full bg-white text-gray-700 shadow-sm hover:bg-pink-600 hover:text-white transition-colors" data-album="pribadi">
+          <i class="fas fa-smile mr-2"></i> Pribadi
+        </button>
+        <button class="album-btn kegiatan px-4 py-2 rounded-full bg-white text-gray-700 shadow-sm hover:bg-pink-600 hover:text-white transition-colors" data-album="kegiatan">
+          <i class="fas fa-running mr-2"></i> Kegiatan
+        </button>
+      </div>
 
-    <div class="container">
-        <!-- Album Navigation -->
-        <div class="album-navigation">
-            <button class="album-btn organisasi active" data-album="organisasi">
-                <i class="fas fa-users"></i> Organisasi
-            </button>
-            <button class="album-btn akademik" data-album="akademik">
-                <i class="fas fa-graduation-cap"></i> Akademik
-            </button>
-            <button class="album-btn kuliah" data-album="kuliah">
-                <i class="fas fa-book"></i> Kuliah
-            </button>
-            <button class="album-btn pribadi" data-album="pribadi">
-                <i class="fas fa-smile"></i> Pribadi
-            </button>
-            <button class="album-btn kegiatan" data-album="kegiatan">
-                <i class="fas fa-running"></i> Kegiatan
-            </button>
-        </div>
-
-        <!-- Organisasi Album -->
-        <div class="album-content active" id="organisasi">
-            <h2 class="album-title">Album Organisasi</h2>
-            <div class="album-grid">
-                <!-- Repeat this block for each image -->
-                <div class="album-item">
-                    <img src="Image/o1.jpg" alt="Kegiatan Organisasi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kerja Tim</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/o2.jpg" alt="Kegiatan Organisasi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kerja Tim</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/o3.jpg" alt="Kegiatan Organisasi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Pelantikan</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/o4.jpg" alt="Kegiatan Organisasi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kerja Tim</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/o5.jpg" alt="Kegiatan Organisasi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kerja Tim</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/o6.jpg" alt="Kegiatan Organisasi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kerja Tim</h3>
-                    </div>
-                </div>
+      <!-- Organisasi Album -->
+      <div class="album-content active" id="organisasi">
+        <h2 class="text-2xl font-bold text-center mb-8">Album Organisasi</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/o1.jpg" alt="Kegiatan Organisasi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kerja Tim</h3>
             </div>
-        </div>
-
-        <!-- Akademik Album -->
-        <div class="album-content" id="akademik">
-            <h2 class="album-title">Album Akademik</h2>
-            <div class="album-grid">
-                <div class="album-item">
-                    <img src="Image/ka1.jpg" alt="Kegiatan Akademik">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Lomba</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ka2.jpg" alt="Kegiatan Akademik">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Porseni</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ka3.jpg" alt="Kegiatan Akademik">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Belajar</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ka4.jpg" alt="Kegiatan Akademik">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Workshop</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ka5.jpg" alt="Kegiatan Akademik">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Pensi</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ka6.jpg" alt="Kegiatan Akademik">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">belajar</h3>
-                    </div>
-                </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/o2.jpg" alt="Kegiatan Organisasi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kerja Tim</h3>
             </div>
-        </div>
-
-        <!-- Kuliah Album -->
-        <div class="album-content" id="kuliah">
-            <h2 class="album-title">Album Kuliah</h2>
-            <div class="album-grid">
-                <div class="album-item">
-                    <img src="Image/k1.jpg" alt="Kegiatan Kuliah">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Diskusi Kelas</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/k2.jpg" alt="Kegiatan Kuliah">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kuliah Umum</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/k3.jpg" alt="Kegiatan Kuliah">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Presentasi Tugas</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/k4.jpg" alt="Kegiatan Kuliah">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kuliah Umum</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/k5.jpg" alt="Kegiatan Kuliah">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kuliah Umum</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/k6.jpg" alt="Kegiatan Kuliah">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kuliah Umum</h3>
-                    </div>
-                </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/o3.jpg" alt="Kegiatan Organisasi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Pelantikan</h3>
             </div>
-        </div>
-
-        <!-- Pribadi Album -->
-        <div class="album-content" id="pribadi">
-            <h2 class="album-title">Album Pribadi</h2>
-            <div class="album-grid">
-                <div class="album-item">
-                    <img src="Image/p1.jpg" alt="Kegiatan Pribadi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Waktu Luang</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/p2.jpg" alt="Kegiatan Pribadi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Pantai</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/p3.jpg" alt="Kegiatan Pribadi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Travelling</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/p4.jpg" alt="Kegiatan Pribadi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Self Development</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/p5.jpg" alt="Kegiatan Pribadi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Self Development</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/p6.jpg" alt="Kegiatan Pribadi">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">sunset</h3>
-                    </div>
-                </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/o4.jpg" alt="Kegiatan Organisasi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kerja Tim</h3>
             </div>
-        </div>
-
-        <!-- Kegiatan Album -->
-        <div class="album-content" id="kegiatan">
-            <h2 class="album-title">Album Kegiatan</h2>
-            <div class="album-grid">
-                <div class="album-item">
-                    <img src="Image/ks1.jpg" alt="Kegiatan Lainnya">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Volunteering</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ks2.jpg" alt="Kegiatan Lainnya">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kompetisi</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ks3.jpg" alt="Kegiatan Lainnya">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Pelatihan</h3>
-                    </div>
-                </div>
-                <div class="album-item">
-                    <img src="Image/ks4.jpg" alt="Kegiatan Lainnya">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Olahraga</h3>
-                    </div>
-                </div>
-                <div class ="album-item">
-                    <img src="Image/ks5.jpg" alt="Kegiatan Lainnya">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Kunjungan</h3>
-                    </div>
-                </div>
-                <div class ="album-item">
-                    <img src="Image/ks6.jpg" alt="Kegiatan Lainnya">
-                    <div class="album-item-overlay">
-                        <h3 class="album-item-title">Pelatihan</h3>
-                    </div>
-                </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/o5.jpg" alt="Kegiatan Organisasi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kerja Tim</h3>
             </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/o6.jpg" alt="Kegiatan Organisasi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kerja Tim</h3>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- My Person Favorit -->
+      <div class="album-content hidden" id="Person">
+        <h2 class="text-2xl font-bold text-center mb-8">My Favorit Person</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/PF1.jpg" alt="Favorit Person" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">bucin</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/PF2.jpg" alt="Favorit Person" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">bucin</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/PF3.jpg" alt="Favorit Person" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">bucin</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/PF4.jpg" alt="Favorit Person" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">bucin</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/PF5.jpg" alt="Favorit Person" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">bucin</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/PF6.jpg" alt="Favorit Person" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">bucin</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Akademik Album -->
+      <div class="album-content hidden" id="akademik">
+        <h2 class="text-2xl font-bold text-center mb-8">Album Akademik</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ka1.jpg" alt="Kegiatan Akademik" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Lomba</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ka2.jpg" alt="Kegiatan Akademik" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Porseni</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ka3.jpg" alt="Kegiatan Akademik" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Belajar</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ka4.jpg" alt="Kegiatan Akademik" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Workshop</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ka5.jpg" alt="Kegiatan Akademik" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Pensi</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ka6.jpg" alt="Kegiatan Akademik" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">belajar</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kuliah Album -->
+      <div class="album-content hidden" id="kuliah">
+        <h2 class="text-2xl font-bold text-center mb-8">Album Kuliah</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/k1.jpg" alt="Kegiatan Kuliah" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Diskusi Kelas</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/k2.jpg" alt="Kegiatan Kuliah" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kuliah Umum</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/k3.jpg" alt="Kegiatan Kuliah" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Presentasi Tugas</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/k4.jpg" alt="Kegiatan Kuliah" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kuliah Umum</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/k5.jpg" alt="Kegiatan Kuliah" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kuliah Umum</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/k6.jpg" alt="Kegiatan Kuliah" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kuliah Umum</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pribadi Album -->
+      <div class="album-content hidden" id="pribadi">
+        <h2 class="text-2xl font-bold text-center mb-8">Album Pribadi</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/p1.jpg" alt="Kegiatan Pribadi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Waktu Luang</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/p2.jpg" alt="Kegiatan Pribadi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Pantai</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/p3.jpg" alt="Kegiatan Pribadi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Travelling</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/p4.jpg" alt="Kegiatan Pribadi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Self Development</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/p5.jpg" alt="Kegiatan Pribadi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Self Development</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/p6.jpg" alt="Kegiatan Pribadi" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">sunset</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kegiatan Album -->
+      <div class="album-content hidden" id="kegiatan">
+        <h2 class="text-2xl font-bold text-center mb-8">Album Kegiatan</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ks1.jpg" alt="Kegiatan Lainnya" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Volunteering</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ks2.jpg" alt="Kegiatan Lainnya" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kompetisi</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ks3.jpg" alt="Kegiatan Lainnya" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Pelatihan</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ks4.jpg" alt="Kegiatan Lainnya" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Olahraga</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ks5.jpg" alt="Kegiatan Lainnya" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Kunjungan</h3>
+            </div>
+          </div>
+          <div class="album-item rounded-lg overflow-hidden shadow-md relative group">
+            <img src="Image/ks6.jpg" alt="Kegiatan Lainnya" class="w-full h-64 object-cover">
+            <div class="album-item-overlay absolute inset-0 bg-black/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <h3 class="text-white font-semibold text-lg">Pelatihan</h3>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
+    <div id="backToTop" class="fixed right-6 bottom-20 z-40 w-12 h-12 rounded-full bg-pink-600 text-white shadow-lg flex items-center justify-center opacity-0 transition-all duration-300 hover:bg-pink-700">
+      <i class="fas fa-arrow-up"></i>
     </div>
   </section>
 
-
-  <section id="kontak">
-<button class="message-btn" id="open-message-btn">
-  <i class="fas fa-envelope"></i> Kirim Pesan & Saran
-</button>
-    <div class="container" data-aos="fade-up">
-      <div class="section">
-        <h2><i class="fas fa-envelope"></i> Hubungi Saya</h2>
-        <ul class="contact-list">
-          <li><i class="fas fa-phone"></i> 0856-5484-1160</li>
-          <li><i class="fas fa-envelope"></i> sulfianapammana@gmail.com</li>
-          <li><i class="fas fa-map-marker-alt"></i> Kampiri, Kec. Pammana, Kab. Wajo</li>
+  <!-- Kontak Section -->
+  <section id="kontak" class="py-16 px-4">
+    <div class="container mx-auto max-w-4xl">
+      <button id="open-message-btn" class="mx-auto mb-10 flex items-center px-6 py-3 bg-pink-600 text-white rounded-lg shadow-md hover:bg-pink-700 transition-colors">
+        <i class="fas fa-envelope mr-2"></i> Kirim Pesan & Saran
+      </button>
+      
+      <div class="bg-white rounded-xl shadow-lg p-8" data-aos="fade-up">
+        <h2 class="text-2xl font-bold mb-6 flex items-center">
+          <i class="fas fa-envelope text-pink-600 mr-3"></i> Hubungi Saya
+        </h2>
+        <ul class="space-y-4">
+          <li class="flex items-center">
+            <i class="fas fa-phone text-pink-600 w-6"></i>
+            <span class="ml-3">0856-5484-1160</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-envelope text-pink-600 w-6"></i>
+            <span class="ml-3">sulfianapammana@gmail.com</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-map-marker-alt text-pink-600 w-6"></i>
+            <span class="ml-3">Kampiri, Kec. Pammana, Kab. Wajo</span>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
-   <!-- Footer -->
-  <footer>
-    <div class="container">
-        <div class="footer-content">
-            <h3>Portfolio Sulfiana</h3>
-            <p>Menampilkan momen-momen berharga dalam perjalanan pendidikan dan karier</p>
-            <div class="social-links-footer">
-                <a href="https://www.instagram.com/sulfy.cuppi?igsh=YnhnZjcxa2hmdzRm&utm_source=qr"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/sulfiana-tekom-e-undefined-0a860a382/"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/sulfiana02"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/Sulfyanaaa?t=r-0w8tMVuqn2C8hbrDuNNw&s=09"><i class="fab fa-twitter"></i></a>
-            </div>
-            <p>&copy; 2025 Portfolio Sulfiana. All rights reserved.</p>
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-10">
+    <div class="container mx-auto px-4">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold mb-4">Portfolio Sulfiana</h3>
+        <p class="mb-6 max-w-2xl mx-auto">Menampilkan momen-momen berharga dalam perjalanan pendidikan dan karier</p>
+        <div class="flex justify-center space-x-4 mb-6">
+          <a href="https://www.instagram.com/sulfy.cuppi?igsh=YnhnZjcxa2hmdzRm&utm_source=qr" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/sulfiana-tekom-e-undefined-0a860a382/" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://github.com/sulfiana02" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://x.com/Sulfyanaaa?t=r-0w8tMVuqn2C8hbrDuNNw&s=09" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
         </div>
+        <p>&copy; 2025 Portfolio Sulfiana. All rights reserved.</p>
+      </div>
     </div>
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <!-- Modal untuk Pesan dan Saran Umum -->
+  <div id="message-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-xl shadow-2xl p-6 w-full max-w-md mx-4">
+      <h2 class="text-2xl font-bold mb-2">Kirim Pesan dan Saran</h2>
+      <p class="mb-6 text-center text-gray-600">Kirim pesan atau saran Anda untuk Sulfiana</p>
+      
+      <form id="message-form">
+        <div class="mb-4">
+          <label for="sender-name" class="block text-gray-700 mb-2">Nama Anda</label>
+          <input type="text" id="sender-name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" required>
+        </div>
+        
+        <div class="mb-4">
+          <label for="sender-email" class="block text-gray-700 mb-2">Email Anda</label>
+          <input type="email" id="sender-email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" required>
+        </div>
+        
+        <div class="mb-6">
+          <label for="message" class="block text-gray-700 mb-2">Pesan/Saran</label>
+          <textarea id="message" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 h-32" required placeholder="Tulis pesan atau saran Anda di sini..."></textarea>
+        </div>
+        
+        <div class="flex justify-end space-x-3">
+          <button type="button" id="cancel-btn" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition-colors">Batal</button>
+          <button type="submit" class="px-4 py-2 bg-pink-600 text-white rounded-lg hover:bg-pink-700 transition-colors">Kirim Pesan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     // Initialize AOS
@@ -442,99 +633,6 @@
       duration: 800,
       once: true,
       offset: 100
-    });
-
-    // Initialize particles
-    particlesJS('particles-js', {
-      particles: {
-        number: {
-          value: 100,
-          density: {
-            enable: true,
-            value_area: 800
-          }
-        },
-        color: {
-          value: ["#d63384", "#ff85a2", "#f8bbd0"]
-        },
-        shape: {
-          type: ["circle", "triangle", "polygon"],
-          stroke: {
-            width: 0,
-            color: "#000000"
-          },
-          polygon: {
-            nb_sides: 6
-          }
-        },
-        opacity: {
-          value: 0.6,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false
-          }
-        },
-        size: {
-          value: 4,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 3,
-            size_min: 0.1,
-            sync: false
-          }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#d63384",
-          opacity: 0.4,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 3,
-          direction: "none",
-          random: true,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200
-          }
-        }
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "grab"
-          },
-          onclick: {
-            enable: true,
-            mode: "push"
-          },
-          resize: true
-        },
-        modes: {
-          grab: {
-            distance: 200,
-            line_linked: {
-              opacity: 1
-            }
-          },
-          push: {
-            particles_nb: 4
-          }
-        }
-      },
-      retina_detect: true
     });
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -548,17 +646,21 @@
       // Navbar scroll effect
       function handleScroll() {
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+          navbar.classList.add('shadow-md', 'bg-white');
+          navbar.classList.remove('bg-white/90');
         } else {
-          navbar.classList.remove('scrolled');
+          navbar.classList.remove('shadow-md', 'bg-white');
+          navbar.classList.add('bg-white/90');
         }
         
         // Back to top button visibility
         const backToTopButton = document.getElementById('backToTop');
         if (window.pageYOffset > 300) {
-          backToTopButton.classList.add('visible');
+          backToTopButton.classList.remove('opacity-0');
+          backToTopButton.classList.add('opacity-100');
         } else {
-          backToTopButton.classList.remove('visible');
+          backToTopButton.classList.remove('opacity-100');
+          backToTopButton.classList.add('opacity-0');
         }
       }
 
@@ -566,8 +668,17 @@
 
       // Nav toggle functionality
       navToggle.addEventListener('click', function() {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
+        navMenu.classList.toggle('hidden');
+        navMenu.classList.toggle('flex');
+        navMenu.classList.toggle('flex-col');
+        navMenu.classList.toggle('absolute');
+        navMenu.classList.toggle('top-full');
+        navMenu.classList.toggle('left-0');
+        navMenu.classList.toggle('w-full');
+        navMenu.classList.toggle('bg-white');
+        navMenu.classList.toggle('shadow-md');
+        navMenu.classList.toggle('p-4');
+        navMenu.classList.toggle('space-y-4');
       });
 
       // Nav link click functionality
@@ -586,12 +697,16 @@
           }
           
           // Update active class
-          navLinks.forEach(l => l.classList.remove('active'));
-          this.classList.add('active');
+          navLinks.forEach(l => l.classList.remove('active', 'text-pink-600'));
+          navLinks.forEach(l => l.classList.add('text-gray-700'));
+          this.classList.add('active', 'text-pink-600');
+          this.classList.remove('text-gray-700');
           
           // Close mobile menu if open
-          navToggle.classList.remove('active');
-          navMenu.classList.remove('active');
+          if (!navMenu.classList.contains('hidden')) {
+            navMenu.classList.add('hidden');
+            navMenu.classList.remove('flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'w-full', 'bg-white', 'shadow-md', 'p-4', 'space-y-4');
+          }
         });
       });
 
@@ -627,18 +742,24 @@
       function showAlbum(albumId) {
         // Sembunyikan semua album
         document.querySelectorAll('.album-content').forEach(album => {
+          album.classList.add('hidden');
           album.classList.remove('active');
         });
         
         // Tampilkan album yang dipilih
-        document.getElementById(albumId).classList.add('active');
+        const targetAlbum = document.getElementById(albumId);
+        targetAlbum.classList.remove('hidden');
+        targetAlbum.classList.add('active');
         
         // Update status aktif pada tombol
         document.querySelectorAll('.album-btn').forEach(btn => {
-          btn.classList.remove('active');
+          btn.classList.remove('active', 'bg-pink-600', 'text-white');
+          btn.classList.add('bg-white', 'text-gray-700');
         });
         
-        document.querySelector(`.album-btn[data-album="${albumId}"]`).classList.add('active');
+        const activeBtn = document.querySelector(`.album-btn[data-album="${albumId}"]`);
+        activeBtn.classList.add('active', 'bg-pink-600', 'text-white');
+        activeBtn.classList.remove('bg-white', 'text-gray-700');
       }
 
       // Event listener untuk tombol album
@@ -676,103 +797,54 @@
       if (skillsSection) {
         observer.observe(skillsSection);
       }
+
+      // Modal functionality
+      function showMessageModal() {
+        const modal = document.getElementById('message-modal');
+        modal.classList.remove('hidden');
+      }
+
+      function hideMessageModal() {
+        const modal = document.getElementById('message-modal');
+        modal.classList.add('hidden');
+      }
+
+      // Event listener untuk tombol buka modal
+      document.getElementById('open-message-btn').addEventListener('click', function() {
+        showMessageModal();
+      });
+      
+      // Event listener untuk tombol batal
+      document.getElementById('cancel-btn').addEventListener('click', function() {
+        hideMessageModal();
+      });
+      
+      // Event listener untuk form submit
+      document.getElementById('message-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Di sini Anda bisa menambahkan kode untuk mengirim data ke server
+        // Untuk sekarang kita tampilkan alert saja
+        alert('Terima kasih! Pesan dan saran Anda telah dikirim. Sulfiana akan membacanya segera.');
+        
+        // Sembunyikan modal
+        hideMessageModal();
+      });
+      
+      // Event listener untuk menutup modal ketika klik di luar konten
+      document.getElementById('message-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+          hideMessageModal();
+        }
+      });
+      
+      // Event listener untuk menutup modal dengan tombol Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          hideMessageModal();
+        }
+      });
     });
-
-    function animateSkillBars() {
-  const skillProgresses = document.querySelectorAll('.skill-progress');
-  skillProgresses.forEach(progress => {
-    const width = progress.getAttribute('data-width');
-    progress.style.width = '0'; // mulai dari kosong
-    setTimeout(() => {
-      progress.style.width = width; // isi sesuai persen
-    }, 100);
-  });
-}
-// Fungsi untuk menampilkan modal pesan/saran
-function showMessageModal() {
-  const modal = document.getElementById('message-modal');
-  
-  // Tampilkan modal
-  modal.classList.add('active');
-  
-  // Reset form
-  document.getElementById('message-form').reset();
-}
-
-// Fungsi untuk menyembunyikan modal
-function hideMessageModal() {
-  const modal = document.getElementById('message-modal');
-  modal.classList.remove('active');
-}
-
-// Event listener untuk tombol buka modal
-document.addEventListener('DOMContentLoaded', function() {
-  // Event listener untuk tombol buka modal
-  document.getElementById('open-message-btn').addEventListener('click', function() {
-    showMessageModal();
-  });
-  
-  // Event listener untuk tombol batal
-  document.getElementById('cancel-btn').addEventListener('click', function() {
-    hideMessageModal();
-  });
-  
-  // Event listener untuk form submit
-  document.getElementById('message-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Di sini Anda bisa menambahkan kode untuk mengirim data ke server
-    // Untuk sekarang kita tampilkan alert saja
-    alert('Terima kasih! Pesan dan saran Anda telah dikirim. Sulfiana akan membacanya segera.');
-    
-    // Sembunyikan modal
-    hideMessageModal();
-  });
-  
-  // Event listener untuk menutup modal ketika klik di luar konten
-  document.getElementById('message-modal').addEventListener('click', function(e) {
-    if (e.target === this) {
-      hideMessageModal();
-    }
-  });
-  
-  // Event listener untuk menutup modal dengan tombol Escape
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      hideMessageModal();
-    }
-  });
-});
-
   </script>
-  <!-- Modal untuk Pesan dan Saran Umum -->
-<div class="modal" id="message-modal">
-  <div class="modal-content">
-    <h2>Kirim Pesan dan Saran</h2>
-    <p style="margin-bottom: 15px; text-align: center;">Kirim pesan atau saran Anda untuk Sulfiana</p>
-    
-    <form id="message-form">
-      <div class="modal-form-group">
-        <label for="sender-name">Nama Anda</label>
-        <input type="text" id="sender-name" required>
-      </div>
-      
-      <div class="modal-form-group">
-        <label for="sender-email">Email Anda</label>
-        <input type="email" id="sender-email" required>
-      </div>
-      
-      <div class="modal-form-group">
-        <label for="message">Pesan/Saran</label>
-        <textarea id="message" required placeholder="Tulis pesan atau saran Anda di sini..."></textarea>
-      </div>
-      
-      <div class="modal-buttons">
-        <button type="button" class="modal-btn modal-btn-cancel" id="cancel-btn">Batal</button>
-        <button type="submit" class="modal-btn modal-btn-submit">Kirim Pesan</button>
-      </div>
-    </form>
-  </div>
-</div>
 </body>
 </html>
